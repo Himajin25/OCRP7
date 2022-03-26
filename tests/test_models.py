@@ -109,6 +109,3 @@ class TestWikipediaClient:
         mock_extract = self.mock_wikipedia_object.get_page_extract(mock_page_id)
 
         assert expected_extract == mock_extract
-
-
-        

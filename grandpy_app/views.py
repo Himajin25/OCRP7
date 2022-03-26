@@ -34,4 +34,3 @@ def api():
         api_response = mapbox_response
 
         return api_response
-        

@@ -1,4 +1,6 @@
 """ File containing the tests for the views.py file """
+
+
 def test_index(client):
     response_get = client.get("/")
     response_post = client.post("/")
@@ -9,4 +11,3 @@ def test_index(client):
 def test_api(client):
     response = client.get("/api")
     assert response.status_code == 500
-

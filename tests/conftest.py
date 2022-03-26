@@ -3,7 +3,6 @@ import pytest
 from run import app
 
 
-
 def flask_app():
     app = app()
     app.config.update(
@@ -149,4 +148,3 @@ def mock_wikipedia_extract():
     """ Mocked output from "get_page_extract()" method """
     extract = 'The Eiffel Tower ( EYE-fəl; French: tour Eiffel [tuʁ‿ɛfɛl] (listen)) is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower.\nLocally nicknamed "La dame de fer" (French for "Iron Lady"), it was constructed from 1887 to 1889 as the centerpiece of the 1889 World\'s Fair and was initially criticized by some of France\'s leading artists and intellectuals for its design, but it has become a global cultural icon of France and one of the most recognizable structures in the world. The Eiffel Tower is the most visited monument with an entrance fee in the world; 6.91 million people ascended it in 2015. The Tower was made a Monument historique in 1964 and named part of UNESCO World Heritage Site ("Paris, Banks of the Seins") in 1991.The tower is 330 metres (1,083 ft) tall, about the same height as an 81-storey building, and the tallest structure in Paris.'
     return extract
-
