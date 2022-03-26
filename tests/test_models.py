@@ -76,7 +76,7 @@ class TestWikidataClient:
             return_value=mock_wikidata_response,
         )
         expected_title = "Eiffel Tower"
-        mock_wikidata_title = self.mock_wikidata_object.get_wikipage_title()
+        mock_wikidata_title = self.mock_wikidata_object.get_wikipage_en_title()
 
         assert expected_title == mock_wikidata_title
 
@@ -109,3 +109,6 @@ class TestWikipediaClient:
         mock_extract = self.mock_wikipedia_object.get_page_extract(mock_page_id)
 
         assert expected_extract == mock_extract
+
+
+        

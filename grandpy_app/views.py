@@ -1,3 +1,4 @@
+""" File containing Flask app routes and methods """
 from flask import Flask, render_template, request
 from .models import ParserClient, MapboxClient, WikidataClient, WikipediaClient
 
@@ -5,30 +6,32 @@ from .models import ParserClient, MapboxClient, WikidataClient, WikipediaClient
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route("/")
 def index():
 
-    return render_template('index.html')
+    return render_template("index.html")
 
-@app.route('/api') 
+
+@app.route("/api")
 def api():
-    ui = request.args.get('q')
+    ui = request.args.get("q")
     spacy = ParserClient(ui)
     query = spacy.spacy_en()
     mapbox = MapboxClient(query)
     mapbox_response = mapbox.fetch_location_from_query()
 
-    try : 
+    try:
         wikidata_id = mapbox.get_wiki_id(mapbox_response)
-    except: 
+    except:
         api_response = mapbox_response
         return api_response
-    else:      
+    else:
         wikidata = WikidataClient(wikidata_id)
-        wikipedia_page_title = wikidata.get_wikipage_title()
+        wikipedia_page_title = wikidata.get_wikipage_en_title()
         wikipedia = WikipediaClient(wikipedia_page_title)
         wikipedia_extract = wikipedia.get_page_extract()
-        mapbox_response['wiki'] = wikipedia_extract
+        mapbox_response["wiki"] = wikipedia_extract
         api_response = mapbox_response
 
         return api_response
+        

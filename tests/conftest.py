@@ -1,12 +1,6 @@
-""" File containing fixtures used in tests """
+""" File containing pytest fixtures used in tests """
 import pytest
 from run import app
-# from grandpy_app.models import (
-#     ParserClient,
-#     MapboxClient,
-#     WikidataClient,
-#     WikipediaClient,
-# )
 
 
 

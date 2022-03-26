@@ -1,10 +1,11 @@
-""" Classes used in the app """
+""" File containing the classes used in the app """
 import requests
 import spacy
 
 
 class ParserClient:
     """ Class processing user input to extract location string  """
+
     def __init__(self, user_input):
         self.user_input = user_input
 
@@ -23,6 +24,7 @@ class ParserClient:
 
 class MapboxClient:
     """ Requests location data from Mapbox API using parsed user query  """
+
     def __init__(self, query: str):
         self.url = f"https://api.mapbox.com/geocoding/v5/mapbox.places/{query}.json"
         self.mapbox_token = "pk.eyJ1IjoibmNiIiwiYSI6ImNrejN2NXFiNDA5NTMyb2sycGw0OWRyNWYifQ.HRSod30-jASUMraNtuxc-A"
@@ -52,6 +54,7 @@ class MapboxClient:
 
 class WikidataClient:
     """ Requests Wikidata page title from Wikidata API using wikidata id  """
+
     def __init__(self, wikidata_id):
         self.url = "https://www.wikidata.org/w/api.php"
         self.params = {
@@ -79,6 +82,7 @@ class WikidataClient:
 
 class WikipediaClient:
     """ Requests Wikipedia page extract from Wikipedia API using retrieved Wikipedia page title """
+
     def __init__(self, wikipage_en_title):
         self.url = "https://en.wikipedia.org/w/api.php?"
         self.params = {
@@ -109,7 +113,6 @@ class WikipediaClient:
         wikipedia_json = self.get_json()
         extract = wikipedia_json["query"]["pages"][page_id]["extract"]
         return extract
-
 
         # lib mypy librairie pour verif de type coté ide
         # pydentik gestion de modele en mvc; verif le params d'entree et sortie en temps reel
