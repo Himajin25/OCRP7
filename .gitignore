@@ -1,6 +1,6 @@
 .coverage
 .pytest_cache/
-_pycache_/
+__pycache__/
 venv/
-grandpy_app/_pycache_/
-tests/_pycache_/
+grandpy_app/__pycache__/
+tests/__pycache__/
