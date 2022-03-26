@@ -1,3 +1,4 @@
+""" File from wich app is launched """
 from grandpy_app import app
 
 
