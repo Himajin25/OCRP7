@@ -8,18 +8,21 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
+    """ Function for the "/" route; returns index.html """
 
     return render_template("index.html")
 
 
 @app.route("/api")
 def api():
-    ui = request.args.get("q")
-    spacy = ParserClient(ui)
+    """ Function for the API route
+    takes in userinput and returns data and returns data in json format """
+    user_input = request.args.get("q")
+    spacy = ParserClient(user_input)
     query = spacy.spacy_en()
     mapbox = MapboxClient(query)
     mapbox_response = mapbox.fetch_location_from_query()
-
+    
     try:
         wikidata_id = mapbox.get_wiki_id(mapbox_response)
     except:

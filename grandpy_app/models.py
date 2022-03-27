@@ -43,7 +43,7 @@ class MapboxClient:
         try:
             mapbox_location_data = mapbox_geocoding_json["features"][0]
         except:
-            mapbox_location_data = {"message": "not found"}
+             mapbox_location_data = {"message": "not found"}
         return mapbox_location_data
 
     def get_wiki_id(self, mapbox_location_data):

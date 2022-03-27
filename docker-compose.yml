@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  ocrp7:
+    image: ocrp7
+    build:
+      context: .
+      dockerfile: ./Dockerfile
