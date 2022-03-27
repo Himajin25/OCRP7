@@ -4,6 +4,7 @@ from run import app
 
 
 def flask_app():
+    """ Configuration of flask app to be used in the flask test client """
     app = app()
     app.config.update(
         {
