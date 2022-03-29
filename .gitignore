@@ -5,3 +5,4 @@ __pycache__/
 venv/
 grandpy_app/__pycache__/
 tests/__pycache__/
+.env
