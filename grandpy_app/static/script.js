@@ -32,7 +32,6 @@ $(document).ready(function () {
                     const bbox = data.bbox
                     const coord = data.center
                     const wiki = data.wiki
-                    // const coord = data.items[0]['position']['lat'] +','+ data.items[0]['position']['lng']
                     const map_endpoint = 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/'
                     const map_marker = 'pin-s+555555(' + coord[0] + ',' + coord[1] + ')'
                     console.log(map_marker)

@@ -1,7 +1,7 @@
 """ File containing the classes used in the app """
 import requests
 import spacy
-
+import os
 
 class ParserClient:
     """ Class processing user input to extract location string  """
@@ -21,14 +21,22 @@ class ParserClient:
         print("final query is :", final_query)
         return final_query
 
+# test_var = 'mlkqjfksf'
 
 class MapboxClient:
     """ Requests location data from Mapbox API using parsed user query  """
 
     def __init__(self, query: str):
         self.url = f"https://api.mapbox.com/geocoding/v5/mapbox.places/{query}.json"
-        self.mapbox_token = "pk.eyJ1IjoibmNiIiwiYSI6ImNrejN2NXFiNDA5NTMyb2sycGw0OWRyNWYifQ.HRSod30-jASUMraNtuxc-A"
-        self.params = {"access_token": self.mapbox_token}
+        # self.mapbox_token = test_var
+        self.mapbox_token = os.getenv('MAPBOX_TOKEN')
+        # self.mapbox_token = os.environ.get("MAPBOX_TOKEN")
+        # self.mapbox_token = "pk.eyJ1IjoibmNiIiwiYSI6ImNrejN2NXFiNDA5NTMyb2sycGw0OWRyNWYifQ.HRSod30-jASUMraNtuxc-A"
+        print(type(self.mapbox_token))
+        print(os.getenv('TEST'))
+        print('MAPBOX_TOKEN is :', self.mapbox_token)
+        self.params = {"access_token": str(self.mapbox_token)}
+        print(self.params)
 
     def get_json(self):
         """ Returns json response from Mapbox API """
@@ -108,12 +116,14 @@ class WikipediaClient:
         wikipedia_page_id = wikipedia_json["query"]["pageids"][0]
         return wikipedia_page_id
 
-    def get_page_extract(self, page_id):
-        """ Extracts Wikipedia english page extract from json response """
+    def get_page_extract(self):
+        """ Extracts Wikipedia english page extract from json response using page id"""
         wikipedia_json = self.get_json()
-        extract = wikipedia_json["query"]["pages"][page_id]["extract"]
+        extract = wikipedia_json["query"]["pages"][self.get_page_id()]["extract"]
         return extract
 
+        
+# MAPBOX_TOKEN = 'pk.eyJ1IjoibmNiIiwiYSI6ImNrejN2NXFiNDA5NTMyb2sycGw0OWRyNWYifQ.HRSod30-jASUMraNtuxc-A'
         # lib mypy librairie pour verif de type coté ide
         # pydentik gestion de modele en mvc; verif le params d'entree et sortie en temps reel
         # note: p11 cmodif avec combo box pour chgt de langue

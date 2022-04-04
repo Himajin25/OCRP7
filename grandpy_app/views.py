@@ -32,6 +32,7 @@ def api():
         wikidata = WikidataClient(wikidata_id)
         wikipedia_page_title = wikidata.get_wikipage_en_title()
         wikipedia = WikipediaClient(wikipedia_page_title)
+        wikipedia
         wikipedia_extract = wikipedia.get_page_extract()
         mapbox_response["wiki"] = wikipedia_extract
         api_response = mapbox_response
